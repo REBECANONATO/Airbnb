@@ -1,4 +1,5 @@
 .navbar {
+    text-align: left;
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.18) 0px 1px 2px;
     flex-direction: column;

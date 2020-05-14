@@ -1,17 +1,33 @@
 const API_URL = "https://api.sheety.co/30b6e400-9023-4a15-8e6c-16aa4e3b1e72";
 
-let currentPage = 1;
+const cards = document.querySelector('.card');
 
-const ITEMS_PER_PAGE = 8;
+const getData = () => {
+    fetch(API_URL)
+      .then(response => response.json())
+      .then(data => data.map(item => {
+        const { photo, property_type, name, price } = item;
+  
+        buildCard(photo, property_type, name, price);
+      }));
+  };
 
-const fetchAPI = async (url) => {
-    let response = await fetch(url);
-    const textResponse = await response.text();
-    return JSON.parse(textResponse);
+
+
+const buildCard = (imgsrc, tag, title, price) => {
+    const html = `
+
+        <img src="${imgsrc}" class="card-img-top br0" alt="...">
+        <strong>${tag}</strong>
+        <p>${title}</p>
+        <strong>R$${price},00/night</strong>
+
+    `;
+
+    const div = document.createElement('li');
+    div.innerHTML = html;
+
+    cards.appendChild(div);
 }
-
-const renderPage = async () => {
-    const apiData = await fetchAPI(API_URL);
-
-    
-}
+  
+  getData()
