@@ -29,5 +29,5 @@ const buildCard = (imgsrc, tag, title, price) => {
 
     cards.appendChild(div);
 }
-  
-  getData()
+
+getData()
